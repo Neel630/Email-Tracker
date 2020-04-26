@@ -16,7 +16,7 @@ router.post(
     check('body', 'Email body is require').not().isEmpty(),
     check('emailTo', 'Enter receivers name').isEmail(),
   ],
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -40,15 +40,13 @@ router.post(
       text: body,
     };
 
-    transporter.sendMail(mailOptions, function (error, info) {
+    await transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        res.status(400).json({ error: error });
+        return res.status(400).json({ error: error });
       } else {
-        res.send('Email sent: ' + info.response);
+        return res.send('Email sent: ' + info.response);
       }
     });
-
-    res.send('Email Route');
   }
 );
 
