@@ -1,18 +1,10 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const EmailSchema = new mongoose.Schema({
+const EmailSchema = new Schema({
   emailTo: {
     type: String,
   },
-  //   password: {
-  //     type: String,
-  //   },
-  //   emailTo: {
-  //     type: String,
-  //   },
-  //   body: {
-  //     type: String,
-  //   },
   count: {
     type: Number,
     default: 0,
@@ -22,4 +14,4 @@ const EmailSchema = new mongoose.Schema({
   },
 });
 
-module.exports = EmailSchema = mongoose.model('email', EmailSchema);
+module.exports = Email = mongoose.model('email', EmailSchema);

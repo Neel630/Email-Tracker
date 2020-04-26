@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
+const Email = require('../../model/Email');
 
 //@route    POST api/email
 //@desc     Sends Email
@@ -37,13 +38,25 @@ router.post(
       from: email,
       to: emailTo,
       subject: subject,
-      text: body,
+      html: `<p>${body}</p><p><img src ="localhost:5000/api/email/"></p>`,
     };
 
-    await transporter.sendMail(mailOptions, function (error, info) {
+    transporter.sendMail(mailOptions, async function (error, info) {
       if (error) {
         return res.status(400).json({ error: error });
       } else {
+        const emailFields = {};
+        emailFields.emailTo = emailTo;
+        emailFields.count = 0;
+        emailFields.date = Date.now();
+        const emailObj = new Email(emailFields);
+        try {
+          await emailObj.save();
+        } catch (error) {
+          console.error(error);
+          return res.status(500).send('Server Error');
+        }
+
         return res.send('Email sent: ' + info.response);
       }
     });
