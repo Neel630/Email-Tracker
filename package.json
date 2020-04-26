@@ -11,8 +11,13 @@
   "author": "Neel Shah",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.1",
     "express": "^4.17.1",
+    "mongoose": "^5.9.10",
     "nodemailer": "^6.4.6",
     "save": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
