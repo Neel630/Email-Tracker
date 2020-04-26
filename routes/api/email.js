@@ -46,6 +46,7 @@ router.post(
         return res.status(400).json({ error: error });
       } else {
         const emailFields = {};
+        emailFields.email = email;
         emailFields.emailTo = emailTo;
         emailFields.count = 0;
         emailFields.date = Date.now();
