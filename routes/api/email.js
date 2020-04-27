@@ -38,7 +38,7 @@ router.post(
       from: email,
       to: emailTo,
       subject: subject,
-      html: `<p>${body}</p><p><img src ="localhost:5000/api/email/"></p>`,
+      html: `<p>${body}</p><img src="http://localhost:5000/api/email/track/548" height="1" width="1" />`,
     };
 
     transporter.sendMail(mailOptions, async function (error, info) {
@@ -63,5 +63,15 @@ router.post(
     });
   }
 );
+
+//@route    GET api/email/track/:id
+//@desc     Sends Email
+//@access   Public
+
+router.get('/track/:id', (req, res) => {
+  console.log('innn');
+  //res.redirect('/image.jpg');
+  res.send('inside get');
+});
 
 module.exports = router;

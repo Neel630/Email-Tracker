@@ -9,6 +9,7 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => {
+  console.log('hii');
   res.send('Running');
 });
 
