@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
-
+const Image = require('./model/Image')
+var fs = require('fs');
 //connect to DB
 connectDB();
+
+//save image in database
+var ImageModel = new Image()
+ImageModel.img.data= fs.readFileSync('sample_image.jpg')
 
 //init middleware
 app.use(express.json({ extended: false }));

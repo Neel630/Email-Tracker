@@ -17,6 +17,7 @@ router.post(
     check('body', 'Email body is require').not().isEmpty(),
     check('emailTo', 'Enter receivers name').isEmail(),
   ],
+
   async (req, res) => {
     const errors = validationResult(req);
 
@@ -69,9 +70,8 @@ router.post(
 //@access   Public
 
 router.get('/track/:id', (req, res) => {
-  console.log('innn');
-  //res.redirect('/image.jpg');
-  res.send('inside get');
+  res.redirect('/image.jpg');
+  
 });
 
 module.exports = router;
