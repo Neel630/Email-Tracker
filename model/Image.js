@@ -6,6 +6,10 @@ const ImageSchema = new Schema({
     data: Buffer,
     contentType: String,
   },
+  name:{
+      type:String,
+      unique:true
+  }
 });
 
 
