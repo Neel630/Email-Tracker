@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index",
-    "server": "nodemon index"
+    "start": "node index",
+    "server": "node index"
   },
-  "author": "Neel Shah",
+  "author": "Neel Shah, Sandeep Sharma",
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.1",
